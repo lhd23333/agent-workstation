@@ -1,0 +1,42 @@
+@import 'tailwindcss';
+
+/* 全局暗色主题（Linear / Vercel 风格基调） */
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #0b0d10;
+  color: #e6e8eb;
+  font-family:
+    system-ui,
+    'Segoe UI',
+    'Microsoft YaHei',
+    sans-serif;
+  font-size: 13px;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* 细滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2f36;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a4048;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}

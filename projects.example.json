@@ -1,0 +1,12 @@
+{
+  "settings": {
+    "notifyLogPath": "D:\\path\\to\\notify-popup\\notify-popup.log"
+  },
+  "projects": [
+    {
+      "name": "示例项目",
+      "path": "D:\\path\\to\\your\\project",
+      "panelUrl": "http://127.0.0.1:6420"
+    }
+  ]
+}

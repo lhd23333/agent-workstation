@@ -1,5 +1,17 @@
-# 通用忽略
+# 依赖与构建产物
+node_modules/
+out/
+dist/
+*.tsbuildinfo
+
+# 本地配置（含本机真实路径，不入库；模板见 projects.example.json）
+projects.json
+
+# 面板组件早期草稿（功能已并入 projects.json，含本机路径，不入库）
+panels.json
+
+# 日志与临时文件
+*.log
+*.tmp
 Thumbs.db
 .DS_Store
-*.tmp
-*.log
