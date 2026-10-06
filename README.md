@@ -27,11 +27,24 @@ agent-workstation 反过来做**观察侧**：不接管你的 agent 启动，做
 
 依赖：**Windows 10/11**、Node.js ≥ 20、Git。
 
+首次准备：
+
 ```bash
 git clone https://github.com/lhd23333/agent-workstation.git
 cd agent-workstation
 npm install
 cp projects.example.json projects.json   # 然后编辑它，填入你自己的项目路径
+```
+
+### 日常使用（一键启动）
+
+**双击 `启动工作站.vbs`**（可发送到桌面快捷方式）——无控制台窗口，应用窗口直接出现；
+关掉应用窗口即退出。再次双击不会开出第二个窗口，而是把已有窗口带到前台。
+启动日志在 `%TEMP%\agent-workstation-dev.log`。
+
+### 开发模式（看终端日志）
+
+```bash
 npm run dev
 ```
 
