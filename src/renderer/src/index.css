@@ -1,8 +1,96 @@
 @import 'tailwindcss';
 
-/* 全局暗色主题（Linear / Vercel 风格基调） */
+/* ============================================================
+   主题 token
+   亮色 = 暖纸（默认，与朝夕 / QuizForge 同族）；暗色 = 暖石墨。
+   切换方式：<html> 上加 / 去 .dark 类（App 与 index.html 内联脚本维护）。
+   语义规则：组件只使用下面这些语义色，不直接写调色板色值。
+   ============================================================ */
+
 :root {
+  color-scheme: light;
+
+  /* 层级：bg(最底) → surface(面板) → hover / sel(交互态) */
+  --bg: #f4f2ec;
+  --surface: #fbfaf7;
+  --surface-hover: #efebe1;
+  --surface-sel: #e8e3d5;
+
+  --line: #e2ded2;
+  --line-strong: #d1cabb;
+
+  /* 文字三级 */
+  --fg: #2c2a26;
+  --fg-muted: #5a554c;
+  --fg-faint: #8b8577;
+
+  /* 强调色（选中态、链接、git refs） */
+  --accent: #0d9488;
+
+  /* 色对：fg 用于文字/描边，bg 为淡底（徽章、标签） */
+  --c-neutral: #5b6472; --c-neutral-bg: #eceef1;
+  --c-blue: #1a63c4;    --c-blue-bg: #e3edfb;
+  --c-sky: #0369a1;     --c-sky-bg: #e0f0fa;
+  --c-green: #1a7a4c;   --c-green-bg: #e2f2e9;
+  --c-amber: #92680b;   --c-amber-bg: #f8efd7;
+  --c-orange: #b45309;  --c-orange-bg: #faeedd;
+  --c-red: #b3261e;     --c-red-bg: #fbe7e5;
+}
+
+.dark {
   color-scheme: dark;
+
+  --bg: #141210;
+  --surface: #1b1917;
+  --surface-hover: #242119;
+  --surface-sel: #2b2724;
+
+  --line: #2d2a26;
+  --line-strong: #3b3733;
+
+  --fg: #eae6df;
+  --fg-muted: #b3ada3;
+  --fg-faint: #857f75;
+
+  --accent: #4fd1bd;
+
+  --c-neutral: #aab2bf; --c-neutral-bg: rgba(170, 178, 191, 0.13);
+  --c-blue: #6cb2ff;    --c-blue-bg: rgba(108, 178, 255, 0.14);
+  --c-sky: #6fc2f2;     --c-sky-bg: rgba(111, 194, 242, 0.14);
+  --c-green: #62d195;   --c-green-bg: rgba(98, 209, 149, 0.14);
+  --c-amber: #edc65f;   --c-amber-bg: rgba(237, 198, 95, 0.14);
+  --c-orange: #f0a868;  --c-orange-bg: rgba(240, 168, 104, 0.15);
+  --c-red: #f19090;     --c-red-bg: rgba(241, 144, 144, 0.14);
+}
+
+/* 把 CSS 变量注册为 Tailwind 工具类（bg-bg / text-fg / border-line / bg-c-amber-bg …）
+   inline 表示直接引用变量本身，切 .dark 时无需重生成样式，即时生效。 */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-sel: var(--surface-sel);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-faint: var(--fg-faint);
+  --color-accent: var(--accent);
+
+  --color-c-neutral: var(--c-neutral);
+  --color-c-neutral-bg: var(--c-neutral-bg);
+  --color-c-blue: var(--c-blue);
+  --color-c-blue-bg: var(--c-blue-bg);
+  --color-c-sky: var(--c-sky);
+  --color-c-sky-bg: var(--c-sky-bg);
+  --color-c-green: var(--c-green);
+  --color-c-green-bg: var(--c-green-bg);
+  --color-c-amber: var(--c-amber);
+  --color-c-amber-bg: var(--c-amber-bg);
+  --color-c-orange: var(--c-orange);
+  --color-c-orange-bg: var(--c-orange-bg);
+  --color-c-red: var(--c-red);
+  --color-c-red-bg: var(--c-red-bg);
 }
 
 html,
@@ -13,8 +101,8 @@ body,
 
 body {
   margin: 0;
-  background: #0b0d10;
-  color: #e6e8eb;
+  background: var(--bg);
+  color: var(--fg);
   font-family:
     system-ui,
     'Segoe UI',
@@ -25,17 +113,17 @@ body {
   overflow: hidden;
 }
 
-/* 细滚动条 */
+/* 细滚动条（跟随主题） */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2f36;
+  background: var(--line-strong);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a4048;
+  background: var(--fg-faint);
 }
 ::-webkit-scrollbar-track {
   background: transparent;

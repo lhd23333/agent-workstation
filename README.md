@@ -58,9 +58,9 @@ node node_modules/electron/install.js
 
 ### 开发小辅助
 
-- **界面自查**：`AW_CAPTURE=1 npm run dev` 启动约 6 秒后，应用会把自身页面的真实渲染结果存到
-  `docs/self-capture.png`（走 `webContents.capturePage`，不受 DPI 缩放 / 窗口遮挡 / z 序影响，
-  改 UI 后自查很方便）。
+- **界面自查**：`AW_CAPTURE=1 npm run dev` 启动约 6 秒后，应用会分别以亮色 / 暗色各截一张
+  页面自渲染图，存到 `docs/self-capture-light.png` 与 `docs/self-capture-dark.png`
+  （走 `webContents.capturePage`，不受 DPI 缩放 / 窗口遮挡 / z 序影响，改 UI 后自查很方便）。
 - 主进程终端会转发渲染进程的 console 输出（`[renderer:*]` 前缀），页面报错直接可见。
 
 ## 配置：projects.json

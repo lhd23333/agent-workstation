@@ -15,15 +15,15 @@ export default function ActivityFeed({ events }: Props): JSX.Element {
   const shown = onlyWaiting ? events.filter((e) => waiting(e.event)) : events
 
   return (
-    <aside className="flex w-80 shrink-0 flex-col border-l border-[#1e232a] bg-[#0e1116]">
+    <aside className="flex w-80 shrink-0 flex-col border-l border-line bg-surface">
       <div className="flex items-center justify-between px-3 pt-3 pb-2">
-        <span className="text-[11px] font-semibold tracking-wider text-[#6b7480]">活动流</span>
+        <span className="text-[11px] font-semibold tracking-wider text-fg-faint">活动流</span>
         <button
           onClick={() => setOnlyWaiting((v) => !v)}
           className={`rounded border px-1.5 py-0.5 text-[10.5px] transition-colors ${
             onlyWaiting
-              ? 'border-amber-500/40 bg-amber-500/10 text-amber-300'
-              : 'border-[#262c35] text-[#6b7480] hover:text-[#9aa3ad]'
+              ? 'border-c-amber/40 bg-c-amber-bg text-c-amber'
+              : 'border-line-strong text-fg-faint hover:text-fg-muted'
           }`}
           title="只看等待操作 / 出错的事件"
         >
@@ -35,21 +35,21 @@ export default function ActivityFeed({ events }: Props): JSX.Element {
         {shown.map((e, i) => {
           const meta = eventMeta(e.event)
           return (
-            <div key={`${e.time}-${i}`} className="border-b border-[#161b21] py-1.5 last:border-0">
+            <div key={`${e.time}-${i}`} className="border-b border-line/60 py-1.5 last:border-0">
               <div className="flex items-center gap-1.5 text-[10.5px]">
-                <span className="text-[#6b7480]">{hhmm(e.time)}</span>
+                <span className="text-fg-faint">{hhmm(e.time)}</span>
                 <span className={`rounded border px-1 py-px ${agentCls(e.agent)}`}>{e.agent}</span>
                 <span className={meta.cls}>{meta.label}</span>
               </div>
-              <div className="mt-0.5 truncate text-[11.5px] text-[#b8bfc7]" title={e.title}>
+              <div className="mt-0.5 truncate text-[11.5px] text-fg-muted" title={e.title}>
                 {e.title || '—'}
               </div>
-              <div className="truncate text-[10.5px] text-[#6b7480]">{e.cwdName}</div>
+              <div className="truncate text-[10.5px] text-fg-faint">{e.cwdName}</div>
             </div>
           )
         })}
         {shown.length === 0 && (
-          <div className="py-4 text-[11px] text-[#6b7480]">
+          <div className="py-4 text-[11px] text-fg-faint">
             {onlyWaiting ? '没有待处理事件。' : '暂无事件（来自 notify-popup 日志）。'}
           </div>
         )}

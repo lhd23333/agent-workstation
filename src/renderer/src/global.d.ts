@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 import type { AppState, FocusResult } from '../../shared/types'
 
 declare global {
