@@ -15,3 +15,6 @@ panels.json
 *.tmp
 Thumbs.db
 .DS_Store
+
+# AW_CAPTURE=1 界面自查产物（README 有说明；正式截图是 docs/screenshot.png）
+docs/self-capture.png
