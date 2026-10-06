@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "updated": "2026-10-06",
+  "panels": [
+    {
+      "name": "科研监视板",
+      "kind": "web",
+      "repo": "D:\\data\\学习\\清华\\课程资料\\大二上\\科研",
+      "data_dir": "backlog",
+      "url": "http://127.0.0.1:6420",
+      "port": 6420,
+      "start": "backlog面板\\启动面板.cmd",
+      "stop": "backlog面板\\停止面板.cmd",
+      "health": "http://127.0.0.1:6420",
+      "status_cmd": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"backlog面板\\manager.ps1\" -Action status",
+      "notes": "基于 Backlog.md v1.53.0（npm 全局）。数据=backlog/tasks/*.md。卡片规范见 backlog面板/卡片规范.md。待审查事件经 backlog面板/notify-bridge.ps1 推送到 notify-popup(6210)。"
+    }
+  ]
+}
